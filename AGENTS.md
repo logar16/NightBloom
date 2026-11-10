@@ -1,10 +1,12 @@
 # NightBloom — agent guide
 
-NightBloom is a local tool for creative false-colour astronomy art. A FastAPI
-backend (`src/astroimp`) finds and downloads public HST/JWST/survey FITS, aligns them
-onto one grid, and exports full-resolution renders. A Vite/React/TypeScript WebGL2
-editor (`frontend/`) composites the aligned layers live. `README.md` is the user-facing
-feature reference; this file is the map for changing the code.
+NightBloom is a local tool for creative false-colour astronomy art. The Windows
+desktop uses Rust/Tauri (`src-tauri/`); the alternative Python app uses FastAPI
+(`src/astroimp`). Both find public HST/JWST/survey FITS, align them onto one grid,
+and export full-resolution renders. They share the Vite/React/TypeScript WebGL2
+editor (`frontend/`). Start here for code changes; the [README](README.md) is the
+short introduction, [setup guide](docs/GETTING_STARTED.md) is for users, and
+[reference](docs/REFERENCE.md) covers detailed features, development and CLI use.
 
 Workflow and screens: **Home → New project (search / Aladin capture / bookmarks) → Sky
 (pick images) → Build (align onto a grid) → Edit (composite) → Export.**
@@ -13,9 +15,9 @@ Workflow and screens: **Home → New project (search / Aladin capture / bookmark
 
 - **Never modify `data\`.** It holds the owner's real projects, downloads and frozen
   test fixtures. Reading is fine. Tests and e2e runs use their own temp copies.
-- **Never start, stop or restart the owner's NightBloom on port 8765.** Backend changes
-  reach it when the owner restarts from the in-app update banner. Use another port
-  (`--data <temp dir> --port 8876 --no-browser`) for your own server.
+- **Never start, stop or restart the owner's NightBloom on ports 8765 (Python)
+  or 8766 (desktop).** Use another port and a temporary library for your own
+  server (`--data <temp dir> --port 8876`; Python also takes `--no-browser`).
 - **Never commit `.github/`** (local, ignored). Commit only files you changed; check
   `git status` first.
 - Python: always `uv run --no-sync …` (NightBloom holds the venv lock). Never install
@@ -37,7 +39,11 @@ If you were launched by another agent to do a task:
 ## Commands
 
 ```powershell
-# Backend tests (~40 s)
+# Native backend and desktop checks (from repository root)
+cargo test --manifest-path src-tauri\Cargo.toml --lib
+cargo test --manifest-path src-tauri\Cargo.toml --features desktop --bin astroimp-desktop
+cargo clippy --manifest-path src-tauri\Cargo.toml --features desktop --bin astroimp-desktop -- -D warnings
+# Python backend tests (~40 s)
 uv run --no-sync --with pytest python -m pytest -q
 uv run --no-sync --with pytest python -m pytest -q tests/test_fullres.py -k estimate
 # Frontend (from frontend\)
@@ -53,7 +59,26 @@ uv run --no-sync astroimp edit --session <id> show     # inspect a running Night
 
 ## Architecture map
 
-### Backend (`src/astroimp`)
+### Windows desktop (`src-tauri`)
+
+Paths below are relative to `src-tauri/src/`.
+
+| Area | Path | What lives there |
+| --- | --- | --- |
+| Desktop shell | `bin/astroimp-desktop.rs`, `../tauri.conf.json` | Tauri window, library selection, native dialogs, bundled resources |
+| HTTP/workflow | `server.rs`, `server/workflow.rs`, `server/workflow/` | Axum API, jobs, build/export orchestration and publication |
+| Projects/storage | `projects.rs`, `projects/`, `storage.rs` | Library import/transfer, persistence and cleanup |
+| Discovery | `discovery.rs`, `discovery/`, `samp.rs`, `sky.rs`, `previews.rs` | Archive/survey sources, downloads, SAMP and sky previews |
+| Build | `build.rs`, `native/building.rs`, `native/building/timing.rs` | Grouping, science preparation, reprojection, mosaics and measured alignment ETAs |
+| Rendering/export | `native.rs`, `native/window.rs`, `render.rs`, `geometry.rs`, `planes.rs` | Source-backed export, CPU compositor, view transforms and plane IO |
+| Gallery/history | `gallery.rs`, `export_history.rs`, `png_links.rs` | Home artwork, saved export looks and embedded PNG project links |
+
+**Compositor parity:** visible layer/global controls and geometry must agree in
+the frontend, Rust renderer and Python renderer. Preserve old projects' looks.
+The desktop's supported operations and current limitations are in the
+[reference](docs/REFERENCE.md); do not assume every Python feature exists natively.
+
+### Python backend (`src/astroimp`)
 
 | Stage | Module | What lives there |
 | --- | --- | --- |
