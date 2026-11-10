@@ -1,0 +1,25 @@
+.canvas-dialog { width:min(1180px,94vw); max-width:94vw; padding:0; background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:8px; }
+.canvas-dialog::backdrop { background:#0009; }
+.canvas-dialog .dialog-bar { display:flex; align-items:center; gap:16px; padding:12px 16px; border-bottom:1px solid var(--line); }
+.canvas-dialog h2 { margin:0 auto 0 0; font-size:17px; }
+.canvas-layout { display:grid; grid-template-columns:minmax(0,1fr) 215px; min-height:360px; height:min(68vh,740px); }
+.canvas-mosaic { display:flex; align-items:center; justify-content:center; min-width:0; min-height:0; background:#141619; }
+.canvas-mosaic svg { display:block; width:100%; height:100%; touch-action:none; cursor:crosshair; user-select:none; }
+.canvas-footprint { fill:none; stroke-width:1; opacity:.95; pointer-events:none; }
+.canvas-current { fill:none; stroke:#fff; stroke-dasharray:5 4; stroke-width:1; pointer-events:none; }
+.canvas-region { fill:#e9b35a10; stroke:var(--focus); stroke-width:2; cursor:move; }
+.canvas-handle { fill:var(--panel); stroke:var(--focus); stroke-width:1.5; cursor:nwse-resize; }
+.canvas-handle[data-handle=ne],.canvas-handle[data-handle=sw] { cursor:nesw-resize; }
+.canvas-readout { padding:18px 14px; border-left:1px solid var(--line); overflow:auto; }
+.canvas-readout dl { display:grid; grid-template-columns:auto 1fr; gap:8px 12px; margin:0 0 22px; font-size:11px; }
+.canvas-readout dt { color:var(--muted); }
+.canvas-readout dd { margin:0; text-align:right; }
+.canvas-filters>div { display:grid; grid-template-columns:3px 1fr auto; align-items:center; gap:8px; padding:7px 0; font-size:11px; }
+.canvas-filters i { height:12px; border-radius:2px; }
+.canvas-filters .mono { color:var(--muted); font-size:10px; }
+.canvas-footer { display:flex; align-items:center; justify-content:flex-end; gap:12px; padding:12px 16px; border-top:1px solid var(--line); }
+.canvas-footer [role=alert] { margin-right:auto; font-size:12px; }
+.canvas-warning { color:var(--accent-ink); }
+.canvas-loading { display:flex; align-items:center; gap:10px; color:#aaa8a3; font-size:12px; }
+.canvas-loading svg { width:18px; height:18px; }
+@media(max-width:700px) { .canvas-layout { grid-template-columns:1fr; height:auto; } .canvas-mosaic { height:50vh; } .canvas-readout { border-left:0; border-top:1px solid var(--line); max-height:180px; } .canvas-dialog .dialog-bar { flex-wrap:wrap; gap:8px; } .canvas-readout dl { margin-bottom:10px; } }

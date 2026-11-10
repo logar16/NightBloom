@@ -1,0 +1,52 @@
+[package]
+name = "astroimp-desktop"
+version = "0.1.0"
+edition = "2024"
+default-run = "astroimp-desktop"
+description = "Local false-colour astronomy art from public HST, JWST and survey FITS"
+license = "MIT"
+repository = "https://github.com/logar16/NightBloom"
+
+[lib]
+name = "astroimp_desktop"
+path = "src/lib.rs"
+
+[[bin]]
+name = "astroimp-server"
+path = "src/bin/astroimp-server.rs"
+
+[[bin]]
+name = "astroimp-desktop"
+path = "src/bin/astroimp-desktop.rs"
+required-features = ["desktop"]
+
+[features]
+desktop = ["dep:tauri", "dep:tauri-build", "dep:rfd"]
+
+[build-dependencies]
+tauri-build = { version = "2", optional = true , features = [] }
+
+[dependencies]
+anyhow = "1"
+base64 = "0.23"
+axum = "0.8"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive"] }
+fitsrs = "0.4.1"
+half = "2"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "tiff"] }
+mime_guess = "2"
+rayon = "1"
+reqwest = { version = "0.13", features = ["query", "gzip", "json", "form", "multipart"] }
+rfd = { version = "0.15", optional = true }
+roxmltree = "0.21"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tempfile = "3"
+tauri = { version = "2", optional = true , features = [] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.6", features = ["fs", "trace"] }
+uuid = { version = "1", features = ["v4"] }
+flate2 = "1"
+crc32fast = "1"

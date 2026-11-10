@@ -1,0 +1,18 @@
+<style>
+  .cmp-root{position:absolute;inset:0;overflow:hidden;background:#08090b}
+  .cmp-root img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+  .cmp-after{clip-path:inset(0 0 0 var(--wipe,50%))}
+  .cmp-divider{position:absolute;top:0;bottom:0;left:var(--wipe,50%);width:1px;background:#e9b35a;pointer-events:none;box-shadow:0 0 0 1px #0006}
+  .cmp-handle{position:absolute;top:50%;left:var(--wipe,50%);transform:translate(-50%,-50%);width:30px;height:42px;border:1px solid #e9b35a;border-radius:5px;background:#11151ce8;display:grid;place-items:center;color:#e9b35a;pointer-events:none}
+  .cmp-label{position:absolute;top:12px;background:#0c1018d9;border:1px solid #ffffff1f;border-radius:4px;padding:5px 9px;font:12px var(--mono);pointer-events:none}
+  .cmp-label-before{left:12px;color:#b6bbc5}
+  .cmp-label-after{right:12px;color:#e9b35a}
+</style>
+<figure class="cmp-root" style="position:absolute;inset:0;overflow:hidden;margin:0" aria-label="Image comparison">
+  <img class="cmp-before" alt="Before, all adjustments off" draggable="false">
+  <img class="cmp-after" alt="Selected adjustments" draggable="false">
+  <span class="cmp-divider"></span>
+  <span class="cmp-handle" aria-hidden="true">‹ ›</span>
+  <span class="cmp-label cmp-label-before">BEFORE · all off</span>
+  <span class="cmp-label cmp-label-after">SELECTED</span>
+</figure>

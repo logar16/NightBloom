@@ -1,0 +1,63 @@
+[
+  {
+    "name": "hardness plateau and smooth falloff",
+    "width": 16, "height": 16,
+    "strokes": [{"mode":"hide","size":8,"hardness":0.5,"strength":0.8,"points":[[8.5,8.5]]}],
+    "samples": [[8,8,0.2],[10,8,0.2],[11,8,0.6],[12,8,1]]
+  },
+  {
+    "name": "hide then reveal",
+    "width": 16, "height": 16,
+    "strokes": [
+      {"mode":"hide","size":8,"hardness":1,"strength":0.8,"points":[[8.5,8.5]]},
+      {"mode":"reveal","size":8,"hardness":1,"strength":0.5,"points":[[8.5,8.5]]}
+    ],
+    "samples": [[8,8,0.6],[11,8,0.6],[12,8,0.6]]
+  },
+  {
+    "name": "reveal before hide has no effect",
+    "width": 16, "height": 16,
+    "strokes": [
+      {"mode":"reveal","size":8,"hardness":1,"strength":0.5,"points":[[8.5,8.5]]},
+      {"mode":"hide","size":8,"hardness":1,"strength":0.8,"points":[[8.5,8.5]]}
+    ],
+    "samples": [[8,8,0.2],[12,8,0.2]]
+  },
+  {
+    "name": "overlapping dabs do not accumulate",
+    "width": 16, "height": 16,
+    "strokes": [{"mode":"hide","size":8,"hardness":1,"strength":0.5,"points":[[8.5,8.5],[9.5,8.5],[8.5,8.5]]}],
+    "samples": [[8,8,0.5],[10,8,0.5],[1,8,1]]
+  },
+  {
+    "name": "interpolation fills sparse polyline",
+    "width": 16, "height": 16,
+    "strokes": [{"mode":"hide","size":4,"hardness":1,"strength":1,"points":[[2.5,8.5],[12.5,8.5]]}],
+    "samples": [[2,8,0],[7,8,0],[12,8,0],[7,10,0],[7,11,1]]
+  },
+  {
+    "name": "mask resolution uses full image coordinates",
+    "width": 2049, "height": 9,
+    "strokes": [{"mode":"hide","size":12,"hardness":0.5,"strength":1,"points":[[10.5,4.5]]}],
+    "samples": [[0,1,1],[2,1,0],[3,1,0],[4,1,0],[5,1,1]]
+  },
+  {
+    "name": "white signal uses strength and smooth falloff without erasing",
+    "width": 16, "height": 16,
+    "strokes": [{"mode":"white","size":8,"hardness":0.5,"strength":0.8,"points":[[8.5,8.5]]}],
+    "samples": [[8,8,1],[11,8,1],[12,8,1]],
+    "signal_samples": [[8,8,0.2,0.8],[10,8,0.2,0.8],[11,8,0.6,0.4],[12,8,1,0]]
+  },
+  {
+    "name": "ordered signal painting is independent of hide and reveal",
+    "width": 16, "height": 16,
+    "strokes": [
+      {"mode":"white","size":8,"hardness":1,"strength":0.5,"points":[[8.5,8.5],[9.5,8.5],[8.5,8.5]]},
+      {"mode":"hide","size":8,"hardness":1,"strength":0.8,"points":[[8.5,8.5]]},
+      {"mode":"black","size":8,"hardness":1,"strength":0.5,"points":[[8.5,8.5]]},
+      {"mode":"reveal","size":8,"hardness":1,"strength":0.5,"points":[[8.5,8.5]]}
+    ],
+    "samples": [[8,8,0.6],[11,8,0.6],[1,8,1]],
+    "signal_samples": [[8,8,0.25,0.25],[11,8,0.25,0.25],[1,8,1,0]]
+  }
+]

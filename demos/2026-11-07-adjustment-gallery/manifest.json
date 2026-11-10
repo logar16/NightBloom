@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "width": 900,
+  "height": 522,
+  "bases": [
+    {
+      "id": "rosette",
+      "name": "Rosette Nebula",
+      "source": "DSS2 red",
+      "provenance": "Sampled raw science FITS.",
+      "frames": {
+        "0": "assets/rosette/00.jpg",
+        "8": "assets/rosette/08.jpg",
+        "4": "assets/rosette/04.jpg",
+        "12": "assets/rosette/12.jpg",
+        "2": "assets/rosette/02.jpg",
+        "10": "assets/rosette/10.jpg",
+        "6": "assets/rosette/06.jpg",
+        "14": "assets/rosette/14.jpg",
+        "1": "assets/rosette/01.jpg",
+        "9": "assets/rosette/09.jpg",
+        "5": "assets/rosette/05.jpg",
+        "13": "assets/rosette/13.jpg",
+        "3": "assets/rosette/03.jpg",
+        "11": "assets/rosette/11.jpg",
+        "7": "assets/rosette/07.jpg",
+        "15": "assets/rosette/15.jpg"
+      },
+      "thumbnail": "assets/rosette/baseline.jpg",
+      "baseline": "assets/rosette/baseline.jpg",
+      "sky_auto": "assets/rosette/sky-auto.jpg"
+    },
+    {
+      "id": "eagle",
+      "name": "Eagle Nebula",
+      "source": "JWST F335M",
+      "provenance": "Built science plane, with stored scale/background reversed; not original raw FITS.",
+      "frames": {
+        "0": "assets/eagle/00.jpg",
+        "8": "assets/eagle/08.jpg",
+        "4": "assets/eagle/04.jpg",
+        "12": "assets/eagle/12.jpg",
+        "2": "assets/eagle/02.jpg",
+        "10": "assets/eagle/10.jpg",
+        "6": "assets/eagle/06.jpg",
+        "14": "assets/eagle/14.jpg",
+        "1": "assets/eagle/01.jpg",
+        "9": "assets/eagle/09.jpg",
+        "5": "assets/eagle/05.jpg",
+        "13": "assets/eagle/13.jpg",
+        "3": "assets/eagle/03.jpg",
+        "11": "assets/eagle/11.jpg",
+        "7": "assets/eagle/07.jpg",
+        "15": "assets/eagle/15.jpg"
+      },
+      "thumbnail": "assets/eagle/baseline.jpg",
+      "baseline": "assets/eagle/baseline.jpg",
+      "sky_auto": "assets/eagle/sky-auto.jpg"
+    },
+    {
+      "id": "antennae",
+      "name": "Antennae Galaxies",
+      "source": "HST F435W",
+      "provenance": "Built science plane with a modeled sky pedestal; original raw normalization is unavailable.",
+      "frames": {
+        "0": "assets/antennae/00.jpg",
+        "8": "assets/antennae/08.jpg",
+        "4": "assets/antennae/04.jpg",
+        "12": "assets/antennae/12.jpg",
+        "2": "assets/antennae/02.jpg",
+        "10": "assets/antennae/10.jpg",
+        "6": "assets/antennae/06.jpg",
+        "14": "assets/antennae/14.jpg",
+        "1": "assets/antennae/01.jpg",
+        "9": "assets/antennae/09.jpg",
+        "5": "assets/antennae/05.jpg",
+        "13": "assets/antennae/13.jpg",
+        "3": "assets/antennae/03.jpg",
+        "11": "assets/antennae/11.jpg",
+        "7": "assets/antennae/07.jpg",
+        "15": "assets/antennae/15.jpg"
+      },
+      "thumbnail": "assets/antennae/baseline.jpg",
+      "baseline": "assets/antennae/baseline.jpg",
+      "sky_auto": "assets/antennae/sky-auto.jpg"
+    }
+  ]
+}

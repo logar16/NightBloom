@@ -1,0 +1,130 @@
+.sky-callout {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:12px 16px 4px;
+  padding:10px 10px 10px 14px;
+  border:1px solid color-mix(in srgb,var(--danger) 45%,var(--line));
+  border-left:3px solid var(--danger);
+  border-radius:8px;
+  background:color-mix(in srgb,var(--danger) 9%,var(--panel));
+  color:var(--ink)
+}
+.sky-callout > svg {
+  flex:none;
+  width:18px;
+  height:18px;
+  color:var(--danger)
+}
+.sky-callout p {
+  flex:1;
+  margin:0;
+  font-size:13px;
+  line-height:1.4
+}
+.sky-callout button {
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px
+}
+.sky-callout button svg {
+  width:14px;
+  height:14px
+}
+.coordinate-backdrop {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  background:#171b20;
+  color:#8997a5
+}
+.coordinate-backdrop > svg { width:100%; height:100% }
+.coordinate-backdrop path { stroke:#8299b326; stroke-width:1; vector-effect:non-scaling-stroke; fill:none }
+.coordinate-grid-label { position:absolute; bottom:10px; left:12px; font-size:10px }
+.bookmarked { color:var(--secondary-ink)!important }
+.bookmarked svg { fill:color-mix(in srgb,currentColor 28%,transparent) }
+.thumb-triage .bookmarked { color:#82e2ed!important }
+.thumb-triage:has(.bookmarked),.group-triage:has(.bookmarked) { opacity:1 }
+.sky-view .panel-heading.snapshot-toolbar {
+  display:flex;
+  height:auto;
+  min-height:43px;
+  flex-wrap:wrap;
+  gap:6px 12px;
+  padding-top:6px;
+  padding-bottom:6px
+}
+.sky-view .panel-heading > .snapshot-actions {
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:6px
+}
+.snapshot-actions .capture-action {
+  gap:5px;
+  padding:4px 7px;
+  font:11px var(--body);
+  white-space:nowrap
+}
+.capture-action svg { width:14px; height:14px }
+.snapshot-working {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:grid;
+  place-items:center;
+  background:color-mix(in srgb,var(--canvas) 28%,transparent);
+  cursor:progress
+}
+.snapshot-working > span,.preview-status {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--panel);
+  color:var(--ink);
+  font-size:12px;
+  box-shadow:0 3px 16px #0003
+}
+.snapshot-working svg { width:16px; height:16px; color:var(--secondary-ink) }
+.preview-image-wrap { position:relative }
+.preview-image-wrap > img:not([aria-hidden]) { flex:1; width:0; height:100% }
+.preview-status {
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  max-width:calc(100% - 80px)
+}
+.preview-status > svg { flex:none; width:16px; height:16px }
+.preview-status[role="alert"] > svg { color:var(--danger) }
+.preview-status button { display:flex; align-items:center; gap:5px }
+.preview-status button svg { width:14px; height:14px }
+.soft-surveys { margin-top:12px; border-top:1px solid var(--line) }
+.soft-surveys > summary {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:14px 0;
+  list-style:none;
+  cursor:pointer;
+  color:var(--muted);
+  font-size:12px
+}
+.soft-surveys > summary::-webkit-details-marker { display:none }
+.soft-surveys > summary svg { width:14px; height:14px; transform:rotate(-90deg) }
+.soft-surveys[open] > summary svg { transform:none }
+.soft-surveys > summary .mono { margin-left:auto; font-size:11px }
+.soft-surveys > summary:hover { color:var(--ink) }
+.soft-surveys > .group-card:first-of-type { padding-top:0 }
+.selection-build { display:inline-flex;flex-shrink:0 }
+.selection-blocker { display:flex;align-items:center;gap:6px;min-width:0;max-width:min(360px,35vw);color:var(--muted);font-size:11px }
+.selection-blocker>span { overflow:hidden;text-overflow:ellipsis;white-space:nowrap }
+.selection-blocker>.lucide { flex:none;width:14px;height:14px;color:var(--secondary-ink) }
+.selection-blocker>.icon { flex:none;width:26px;height:26px;padding:5px }
+@media(max-width:700px) {
+  .selection-tray:has(.selection-blocker) { height:auto;min-height:56px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px }
+  .selection-blocker { order:1;flex-basis:100%;max-width:100% }
+}

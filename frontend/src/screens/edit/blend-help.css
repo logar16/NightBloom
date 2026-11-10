@@ -1,0 +1,47 @@
+.blend-control { display: flex; align-items: center; gap: 5px; }
+.blend-control > .control-host { flex: 1; min-width: 0; }
+.blend-help { display: inline-flex; }
+.blend-help .icon { width: 27px; height: 27px; color: var(--muted); }
+.blend-help-popover.ui-popover {
+  width: min(624px, calc(100vw - 16px));
+  top: max(8px, calc(50vh - 400px)) !important;
+  max-height: calc(100vh - 16px) !important;
+  overflow: auto;
+  animation: none;
+}
+.blend-guide { padding: 15px; }
+.blend-guide header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.blend-guide header strong { font: 22px var(--display); }
+.blend-guide header span { margin-left: 13px; font-size: 11px; color: var(--muted); }
+.blend-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+.blend-pair label { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.blend-pair label > span { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.blend-pair .ui-select { flex: 1; min-width: 0; }
+.blend-demo-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.blend-demo-controls label { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+.blend-demo-note { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; color: var(--muted); font-size: 10px; }
+.blend-demo-key { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.blend-demo-key i { width: 9px; height: 9px; border-radius: 2px; margin-left: 5px; }
+.blend-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin: 12px 0; }
+.blend-grid .blend-tile {
+  display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start;
+  gap: 5px; padding: 4px; white-space: normal; text-align: left; border: 1px solid transparent; min-width: 0;
+}
+.blend-tile canvas { width: 100%; height: auto; border-radius: 3px; }
+.blend-tile strong { font-size: 12px; font-weight: 600; }
+.blend-description { color: var(--muted); font-size: 10px; line-height: 1.35; }
+.blend-grid .blend-tile[aria-pressed=true] { border-color: var(--accent-ink); background: var(--accent-soft); }
+.blend-grid .blend-tile.previewing { background: var(--hover); }
+.blend-current { color: var(--accent-ink); }
+.blend-detail { display: grid; grid-template-columns: 220px 1fr; gap: 20px; border-top: 1px solid var(--line); padding-top: 13px; }
+.blend-detail canvas { width: 220px; max-width: 100%; height: auto; border-radius: 4px; }
+.blend-detail > div { min-width: 0; padding-top: 8px; }
+.blend-detail h3 { font: 23px var(--display); margin: 6px 0; }
+.blend-detail p { margin: 0 0 15px; font-size: 12px; line-height: 1.5; }
+.blend-detail small { display: block; margin-top: 13px; font-size: 10px; color: var(--muted); line-height: 1.4; }
+@media (max-width: 520px) {
+  .blend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blend-detail { grid-template-columns: 40% 1fr; gap: 12px; }
+  .blend-pair { grid-template-columns: 1fr; gap: 6px; }
+  .blend-guide header span { display: none; }
+}

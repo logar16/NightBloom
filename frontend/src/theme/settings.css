@@ -1,0 +1,13 @@
+.settings-popover { width: 316px; padding: 16px; }
+.settings-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.settings-heading h2 { font: 23px var(--display); }
+.settings-heading .icon { padding: 7px; }
+.settings-section { padding: 17px 0; border-bottom: 1px solid var(--line); }
+.settings-section h3 { margin: 0 0 12px; color: var(--muted); font: 10px var(--mono); }
+.settings-section .ui-segmented { display: flex; width: 100%; }
+.settings-section .ui-segment { flex: 1; padding: 8px 9px; gap: 6px; }
+.settings-section .lucide { width: 14px; height: 14px; }
+.settings-color { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.settings-color + .settings-color { margin-top: 12px; }
+.ui-popover .settings-reset { padding: 12px 0 0; color: var(--muted); }
+.settings-reset .lucide { width: 13px; height: 13px; }

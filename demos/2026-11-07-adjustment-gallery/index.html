@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NightBloom · Adjustment lab</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <div class="app">
+    <header class="masthead">
+      <div class="identity">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10"/><path d="M16 1v9m0 12v9M1 16h9m12 0h9"/></svg>
+        <div><span class="wordmark">NightBloom</span><h1>Adjustment lab</h1></div>
+      </div>
+      <button class="setup-badge" id="about-open" title="How these examples were made">
+        <span class="badge-dot"></span>Controlled examples
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg>
+      </button>
+    </header>
+    <nav id="base-images" class="base-images" aria-label="Base image"></nav>
+    <main class="workspace">
+      <aside class="controls" aria-label="Image adjustments">
+        <div class="controls-title"><h2>Adjustments</h2><div class="control-actions">
+          <button id="all-off" class="icon-button" aria-label="Turn all adjustments off" title="Turn all off">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6"/></svg>
+          </button>
+          <button id="all-on" class="icon-button" aria-label="Turn all adjustments on" title="Turn all on">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 4 4L20 4m-9 14 3 3 8-8"/></svg>
+          </button>
+        </div></div>
+        <div class="scope-tabs" role="group" aria-label="Example scope">
+          <button type="button" data-mode="build" aria-pressed="true">Build / Fill</button>
+          <button type="button" data-mode="sky" aria-pressed="false">Sky only</button>
+        </div>
+        <fieldset data-scope="build"><legend>Build</legend>
+          <label class="effect" title="Matches overlapping same-filter tiles during a build. The right tile has a deliberate exposure/background mismatch.">
+            <input type="checkbox" value="1" checked>
+            <span><strong>Mosaic matching</strong><small>Match the overlapping tiles</small></span>
+          </label>
+          <label class="effect" title="Subtracts the estimated sky background and rescales source intensity during a build.">
+            <input type="checkbox" value="2" checked>
+            <span><strong>Normalization</strong><small>Remove the sky pedestal</small></span>
+          </label>
+        </fieldset>
+        <fieldset data-scope="build"><legend>Fill around</legend>
+          <label class="effect" title="Fits the surrounding survey's gain and offset to the subject. These examples use a blurred same-band stand-in, not a new survey download.">
+            <input type="checkbox" value="4" checked>
+            <span><strong>Survey tone match</strong><small>Match the surrounding image</small></span>
+          </label>
+          <label class="effect" title="Softens the subject layer's contribution near its footprint edge. It does not alter its fully covered interior.">
+            <input type="checkbox" value="8" checked>
+            <span><strong>Edge feather</strong><small>Soften the subject boundary</small></span>
+          </label>
+        </fieldset>
+        <fieldset data-scope="sky" hidden><legend>Sky view only</legend>
+          <label class="effect" title="The actual Sky Auto histogram adjustment, applied only to the displayed result. Science data and edit settings remain unchanged.">
+            <input type="checkbox" value="16">
+            <span><strong>Auto display tone</strong><small>Set snapshot black/white/midtones</small></span>
+          </label>
+        </fieldset>
+        <div class="pipeline" data-scope="build" aria-label="Processing order"><span>Science</span><i>→</i><span>Layers</span></div>
+        <p class="scope-note" data-scope="sky" hidden>Display only. No change to Build, Edit, or exports.</p>
+      </aside>
+      <section class="viewer" aria-label="Before and after viewer">
+        <div class="viewer-heading">
+          <div><h2 id="image-title">Loading images…</h2><span id="image-source" class="source-label"></span></div>
+          <output id="selection-status" aria-label="Selected adjustment count" aria-live="polite">Loading…</output>
+        </div>
+        <label class="reference-choice">Reference
+          <select id="reference" aria-label="Comparison reference">
+            <option value="built">Normal built source</option>
+            <option value="uncorrected">Uncorrected demo composite</option>
+          </select>
+        </label>
+        <div id="scenes" class="scenes"></div>
+        <div class="comparison-controls">
+          <span>Before</span>
+          <input id="wipe" type="range" min="0" max="100" value="50" aria-label="Before and after split">
+          <span>Selected</span>
+          <output id="wipe-value" class="mono">50 / 50</output>
+        </div>
+        <p id="gallery-error" role="alert" hidden></p>
+      </section>
+    </main>
+    <footer class="page-footer"><span>Real astronomy pixels · no projects changed</span><span class="mono">Build / Fill simulation · Sky kept separate</span></footer>
+  </div>
+  <dialog id="about" aria-labelledby="about-title">
+    <div class="dialog-heading"><h2 id="about-title">About the examples</h2><button id="about-close" class="icon-button" aria-label="Close example details">×</button></div>
+    <p>These are controlled demonstrations, not screenshots of your current composition.</p>
+    <dl id="provenance"></dl>
+    <p>The overlapping tiles have a deliberately introduced exposure difference. The surroundings are a blurred same-band stand-in with a deliberate tone mismatch.</p>
+    <p>The default reference is a single normalized built source, with no artificial surroundings. “Uncorrected demo composite” is a stress test, not the incoming image or NightBloom’s normal build result.</p>
+    <p>Build operations use the native backend. Matching, feathering and compositing use the existing reference renderer. The separate Sky example runs the actual frontend Auto code and SVG display filter on the base display image. It never changes the build comparison, edits or exports.</p>
+    <p>Matching and feathering do not guarantee a seamless result: additive overlap can remain brighter, and Auto can brighten noise. All combinations keep the same color and blend settings.</p>
+  </dialog>
+  <script type="module" src="gallery.js"></script>
+</body>
+</html>

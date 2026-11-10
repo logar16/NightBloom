@@ -1,0 +1,28 @@
+#root {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#root > main {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}
+
+.favorite-badge {
+  bottom: 9px;
+}
+
+.favorite-badge .lucide {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-left: 1px;
+}
+
+.thumb-select .check .lucide {
+  width: 11px;
+  height: 11px;
+}

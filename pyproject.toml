@@ -1,0 +1,40 @@
+[project]
+name = "astroimp"
+version = "0.1.0"
+description = "Local false-colour astronomy art from public HST, JWST and survey FITS."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Logan Jones" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "astroquery>=0.4.11",
+    "astropy>=7.1.1",
+    "astropy-healpix>=2.0.1",
+    "numpy>=2.0",
+    "pyvo>=1.9.1",
+    "requests>=2.32",
+    "fastapi>=0.143.2",
+    "uvicorn[standard]>=0.54.0",
+    "reproject>=0.21.0",
+    "scikit-image>=0.26.0",
+    "pillow>=13.0.0",
+]
+
+[project.scripts]
+astroimp = "astroimp.cli:main"
+
+[project.urls]
+Repository = "https://github.com/logar16/NightBloom"
+
+[build-system]
+requires = ["uv_build>=0.9.9,<0.10.0"]
+build-backend = "uv_build"
+
+[[tool.uv.index]]
+url = "https://packagefeedproxy.microsoft.io/pypi/simple/"
+default = true
+
+[tool.uv]
+environments = ["sys_platform == 'win32'"]
